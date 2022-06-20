@@ -7,6 +7,8 @@ from bs4 import BeautifulSoup
 
 special = string.punctuation + ' '
 
+#getting website address
+
 artist = input("Enter the band/artist name: ")
 song = input("Enter the song name: ")
 
@@ -17,6 +19,8 @@ for char in special:
 root = "https://www.azlyrics.com/lyrics/"
 
 URL = root + artist.lower() + '/' + song.lower() + '.html'
+
+#getting content from address
 
 page = requests.get(URL)
 soup = BeautifulSoup(page.content, "html.parser")
@@ -29,6 +33,8 @@ fileName = song.lower() +'.txt'
 
 skip = 'Submit Corrections'
 is_skipped = False
+
+#creating file with lyrics (all content until 'submit corrections')
 
 with open(fileName, 'w') as file:
     file.write(URL + '\n \n')
